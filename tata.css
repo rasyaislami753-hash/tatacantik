@@ -1,0 +1,283 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: radial-gradient(circle at top left, #590d16, #2b0408 60%, #140103 100%);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Efek Background Blur & Cahaya Merah Gelap */
+.bg-overlay {
+    position: fixed;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(180, 20, 40, 0.35), transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(120, 10, 25, 0.4), transparent 50%);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    z-index: 1;
+}
+
+/* Container Animasi Emoji */
+#emoji-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.floating-emoji {
+    position: absolute;
+    bottom: -50px;
+    font-size: 24px;
+    opacity: 0.85;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.9;
+    }
+    85% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Pengaturan Halaman */
+.app-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 460px;
+    padding: 20px;
+}
+
+.page {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.page.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Kartu Kaca Realistis (Glassmorphism Merah Gelap) */
+.glass-card {
+    background: rgba(45, 8, 14, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 120, 140, 0.25);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 36px 28px;
+    width: 100%;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #ffe3e8;
+    text-shadow: 0 2px 10px rgba(255, 80, 100, 0.3);
+}
+
+.subtitle {
+    font-size: 0.92rem;
+    color: #e2b8c0;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+/* Input Page 1 */
+.input-group {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 130, 150, 0.3);
+    background: rgba(20, 2, 5, 0.6);
+    color: #fff;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+input[type="text"]:focus {
+    border-color: #ff4d6d;
+    box-shadow: 0 0 15px rgba(255, 77, 109, 0.4);
+}
+
+.error-text {
+    color: #ff859b;
+    font-size: 0.85rem;
+    margin-top: 8px;
+    min-height: 20px;
+    font-weight: 400;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #a4133c, #590d22);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(164, 19, 60, 0.4);
+    border: 1px solid rgba(255, 150, 170, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 25px rgba(201, 24, 74, 0.55);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+/* PAGE 2: Amplop & Kertas Surat */
+.envelope-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.envelope-wrapper:hover {
+    transform: scale(1.04);
+}
+
+.envelope {
+    position: relative;
+    width: 280px;
+    height: 180px;
+    background: linear-gradient(145deg, #800f2f, #4a0719);
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid rgba(255, 150, 170, 0.25);
+}
+
+.envelope .flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-top: 105px solid #a4133c;
+    transform-origin: top;
+    transition: transform 0.6s ease;
+    z-index: 3;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+.envelope .seal {
+    position: relative;
+    z-index: 4;
+    width: 46px;
+    height: 46px;
+    background: #590d22;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    border: 2px solid #ff758f;
+    margin-top: 15px;
+    animation: pulse 1.8s infinite;
+}
+
+.tap-hint {
+    margin-top: 18px;
+    font-size: 0.9rem;
+    color: #ffb3c1;
+    letter-spacing: 0.5px;
+}
+
+/* Kertas Surat Realistis */
+.letter-paper {
+    background: linear-gradient(to bottom, #fffdf9, #f7efe2);
+    color: #2b181c;
+    padding: 32px 26px;
+    border-radius: 8px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(210, 180, 140, 0.25);
+    width: 100%;
+    position: relative;
+    animation: unfoldPaper 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    border: 1px solid #e6d5c1;
+}
+
+.letter-paper.hidden {
+    display: none;
+}
+
+@keyframes unfoldPaper {
+    0% {
+        opacity: 0;
+        transform: scale(0.75) translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.letter-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.55rem;
+    color: #7a0c23;
+    text-align: center;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #c9a9a6;
+    text-transform: capitalize;
+}

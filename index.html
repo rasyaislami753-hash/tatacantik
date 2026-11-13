@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Naomi Talitha</title>
+    <link rel="stylesheet" href="tata.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background & Animasi Emoji -->
+    <div class="bg-overlay"></div>
+    <div id="emoji-container"></div>
+
+    <main class="app-container">
+        <!-- PAGE 1: Input Nama -->
+        <section id="page-1" class="page active">
+            <div class="glass-card">
+                <h2>Selamat Datang ✨</h2>
+                <p class="subtitle">Silakan masukkan nama kamu untuk membuka pesan spesial ini.</p>
+                <div class="input-group">
+                    <input type="text" id="name-input" placeholder="Ketik nama kamu di sini..." autocomplete="off">
+                    <p id="error-msg" class="error-text"></p>
+                </div>
+                <button id="submit-name" class="btn-primary">Masuk</button>
+            </div>
+        </section>
+
+        <!-- PAGE 2: Amplop & Surat -->
+        <section id="page-2" class="page">
+            <div class="envelope-wrapper" id="envelope-wrapper">
+                <div class="envelope" id="envelope">
+                    <div class="flap"></div>
+                    <div class="pocket"></div>
+                    <div class="seal">❤️</div>
+                </div>
+                <p class="tap-hint" id="tap-hint">Ketuk amplop untuk membuka surat</p>
+            </div>
+
+            <!-- Kertas Surat (Muncul saat amplop diklik) -->
+            <div class="letter-paper hidden" id="letter-paper">
+                <h1 class="letter-title">Surat Terbuka Untuk Tata</h1>
+                <div class="letter-body">
+                    <p>
+                        hiii naomii talitha... perkenalkan saya rasya pembuat web ini, dan web ini khusus untuk kamu, surat ini saya berikan untuk mengajak ananda tata yang cantik untuk menjadi teman saya (terlebih dahulu) dan saya berharap setelah surat ini saya berikan saya bisa mengenal anda lebih dekat, sekian surat ini saya berikan salam hangat rasya....
+                    </p>
+                </div>
+                <div class="letter-footer">
+                    <button id="next-to-page3" class="btn-link">Klik di sini untuk melanjutkan ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: Sidik Jari (Hold to Verify) -->
+        <section id="page-3" class="page">
+            <div class="glass-card">
+                <h2>Konfirmasi Persetujuan</h2>
+                <p class="subtitle">Tekan dan tahan sidik jari di bawah ini sebagai tanda bahwa kamu setuju.</p>
+                
+                <div class="fingerprint-area">
+                    <div class="scanner-ring" id="scanner-ring">
+                        <button id="fingerprint-btn" class="fingerprint-btn" aria-label="Sidik Jari">
+                            <!-- SVG Ikon Sidik Jari -->
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 12C2 6.5 6.5 2 12 2a10 10 0 0 1 8 4"/>
+                                <path d="M5 19.5C5.5 18 6 15 6 12c0-.7.12-1.37.34-2"/>
+                                <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"/>
+                                <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"/>
+                                <path d="M8.65 22c.21-.66.45-1.32.57-2"/>
+                                <path d="M14 13.12c0 2.38 0 6.38-1 8.88"/>
+                                <path d="M2 16h.01"/>
+                                <path d="M21.8 16c.2-2 .131-5.354 0-6"/>
+                                <path d="M9 6.8a6 6 0 0 1 9 5.2c0 .47 0 1.17-.02 2"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="loading-status">
+                        <span id="progress-text">0%</span>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" id="progress-bar"></div>
+                        </div>
+                    </div>
+                </div>
+                <p class="hold-instruction">Tahan terus sampai 100% ya...</p>
+            </div>
+        </section>
+
+        <!-- PAGE 4: Ucapan Terima Kasih -->
+        <section id="page-4" class="page">
+            <div class="glass-card final-card">
+                <div class="heart-pulse">💖</div>
+                <h2>Yeay! Berhasil</h2>
+                <p class="final-message">
+                    "terimakasih karna kamu sudah bersedia untuk berteman dengan rasya, semoga bisa berteman dengan baik, dan semoga kita bisa kenal lebih jauh satu sama lain, terimakasihhhh tataa..."
+                </p>
+                <div class="signature">— Rasya</div>
+            </div>
+        </section>
+    </main>
+
+    <script src="java.js"></script>
+</body>
+</html>
